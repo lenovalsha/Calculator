@@ -3,3 +3,15 @@
     height: 50px;
     background-color: red;
 }
+
+.row
+{
+    display:flex ;
+    width: 500px;
+
+}
+button{
+    width: 100px;
+    height: 80px;
+    background-color: green;
+}
