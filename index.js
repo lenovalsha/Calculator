@@ -56,7 +56,8 @@ buttonArr.forEach(btn => {
             switch(operationVal)
             {
                 case "+":
-                    x+=y;
+                   x= +x + +y; //so they know its a number not a string
+
                     break;
                 case "-":
                     x-=y;
@@ -69,12 +70,13 @@ buttonArr.forEach(btn => {
                     break;
 
             }
-            y="";
             hasOperation = false;
             console.log(x);
             displaytext.textContent = x;
+            y="";
 
         }
+        
     }
     
 });

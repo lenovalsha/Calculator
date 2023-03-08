@@ -30,7 +30,6 @@ body{
     display:flex ;
     width: 100%;
     justify-content: space-around;
-    
 }
 button{
     width: 75px;
@@ -59,9 +58,6 @@ label{
     position: relative;
     font-weight: 100;
     overflow: hidden;
-    
-    
-
 }
 hr{
     width: 40%;
@@ -71,12 +67,10 @@ hr{
 .yellow{
     background-color: #f69a06;
     font-size: 40px;
-
 }
 .light{
     background-color: #a0a0a0;
     color: black;
-
 }
 h5{
     color: white;
