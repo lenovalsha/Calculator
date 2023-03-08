@@ -1,36 +1,56 @@
 var button = document.querySelector('button');
 var box = document.getElementById('box');
 var buttonArr = document.querySelectorAll('button');
+var displaytext = document.querySelector('label');
 
-var hasOperation;
+var hasOperation= false;
 var operationVal = "";
 var x = "";
 var y ="";
 
 button.onclick = function ChangeMe(){
     console.log('clicked');
-    box.style.backgroundColor = 'green';
 }
 buttonArr.forEach(btn => {
     var val = btn.innerHTML;
     btn.onclick = function Change(){
-        
-        if(!hasOperation && val !== "=")
+        if(val === "AC")
         {
-            x += val.toString();
+         window.location.reload();
+        }else if(val === "+"||val === "-"||val === "x"||val === "÷")
+        {
+         
+                hasOperation = true;
+                operationVal = val;
+            
+        }
+        else if(!hasOperation && val !== "=")
+        {
+            if(val === "+/-")//toggle
+            {
+                x = -1 * x;
+            }else if(val === "%")
+            {
+                x/=100;
+            }else if(val ===".")
+            {
+                if(x.includes(val))
+                    x = x;
+                else
+                x += val.toString();
+            }
+            else
+                x += val.toString();
+            displaytext.textContent = x;
             console.log(x);
-            btn.style.backgroundColor = "yellow";
 
         }else if(hasOperation && val !== "=")
         {
             y += val.toString();
             console.log(y);
-            btn.style.backgroundColor = "red";
+            displaytext.textContent = y;
 
-        }else if(val === "+"||val === "-"||val === "*"||val === "/")
-        {
-            hasOperation = true;
-            operationVal = val;
+
         }else if(hasOperation && val =="=")
         {
             switch(operationVal)
@@ -41,15 +61,19 @@ buttonArr.forEach(btn => {
                 case "-":
                     x-=y;
                     break;
-                case "*":
+                case "x":
                     x*=y;
                     break;
-                case "/":
+                case "÷":
                     x/=y;
                     break;
 
             }
+            y="";
+            hasOperation = false;
             console.log(x);
+            displaytext.textContent = x;
+
         }
     }
     
